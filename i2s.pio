@@ -1,0 +1,17 @@
+.program i2s
+.side_set 2
+
+; side-set bits:
+; bit0 = BCLK
+; bit1 = LRCLK
+
+; このひな形は「32bit 左 + 32bit 右」を送る想定
+; DATA は out pin で出す
+
+.wrap_target
+pull block        side 0b00
+out pins, 32      side 0b00
+
+pull block        side 0b01
+out pins, 32      side 0b01
+.wrap

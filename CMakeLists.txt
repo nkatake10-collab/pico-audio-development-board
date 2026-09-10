@@ -34,6 +34,8 @@ include(pico_sdk_import.cmake)
 
 # プロジェクトの設定
 project(RP2354_effect_program C CXX ASM)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
@@ -49,9 +51,14 @@ pico_set_program_version(RP2354_effect_program "0.1")
 pico_enable_stdio_uart(RP2354_effect_program 0)
 pico_enable_stdio_usb(RP2354_effect_program 1)
 
+# PIOヘッダーファイルの生成
+pico_generate_pio_header(RP2354_effect_program ${CMAKE_CURRENT_LIST_DIR}/i2s.pio)
+
 # 標準ライブラリのリンク
 target_link_libraries(RP2354_effect_program
-        pico_stdlib)
+        pico_stdlib
+        hardware_pio
+        )
 
 # 標準インクルードファイルの追加
 target_include_directories(RP2354_effect_program PRIVATE
