@@ -1,0 +1,18 @@
+.program i2s
+.side_set 2
+
+.wrap_target
+; 左チャンネル。LRCK切替とMSB出力を同じ命令で行う
+pull block side 0b01
+set x, 31 side 0b01
+left_loop:
+out pins, 1 side 0b00
+jmp x-- left_loop side 0b01
+
+; 右チャンネル。LRCK切替とMSB出力を同じ命令で行う
+pull block side 0b11
+set x, 31 side 0b11
+right_loop:
+out pins, 1 side 0b10
+jmp x-- right_loop side 0b11
+.wrap

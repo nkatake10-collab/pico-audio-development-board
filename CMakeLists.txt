@@ -52,7 +52,7 @@ pico_enable_stdio_uart(RP2354_effect_program 0)
 pico_enable_stdio_usb(RP2354_effect_program 1)
 
 # PIOヘッダーファイルの生成
-pico_generate_pio_header(RP2354_effect_program ${CMAKE_CURRENT_LIST_DIR}/i2s.pio)
+pico_generate_pio_header(RP2354_effect_program ${CMAKE_CURRENT_LIST_DIR}/left_justified.pio)
 
 # 標準ライブラリのリンク
 target_link_libraries(RP2354_effect_program
